@@ -1,1 +1,2 @@
-Fine-tuning Deep Speech to Dysarthric Speech
+## Adapting Automatic Speech Recognition to Dysarthric Speech
+### Masters Minor Dissertation
