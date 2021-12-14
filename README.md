@@ -23,3 +23,7 @@ Code accompanying masters minor dissertation which investigates different approa
   * creation of plots used in the dissertation
 
 #### References
+
+* Deep Speech
+* Encoder-decoder
+* UASpeech
