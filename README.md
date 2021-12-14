@@ -1,10 +1,10 @@
 ## Adapting Automatic Speech Recognition to Dysarthric Speech
 
-#### Description
+### Description
 
 Code accompanying masters minor dissertation which investigates different approaches to improving dysarthric speech recognition. More specifically, Deep Speech is fine-tuned to the UASpeech dataset. In addition to fine-tuning, layer freezing, data augmentation and re-initialization are investigated. 
 
-#### Folders & Scripts
+### Folders & Scripts
 
 * *deep-speech:* 
   * split.py: split the data into train/validation/test sets for both dysarthric and control data 
@@ -22,7 +22,7 @@ Code accompanying masters minor dissertation which investigates different approa
 * *plots:* 
   * creation of plots used in the dissertation
 
-#### References
+### References
 
 * Deep Speech
 * Encoder-decoder
