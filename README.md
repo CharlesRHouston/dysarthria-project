@@ -7,15 +7,15 @@ Code accompanying masters minor dissertation which investigates different approa
 ### Folders & Scripts
 
 * deep-speech: 
-  * *split.py:* split the data into train/validation/test sets for both dysarthric and control data 
-  * *inference.py:* taken from Deep Speech source code and modified to run evaluation on the UASpeech dataset
+  * *split.py:* split the data into train/validation/test sets for both dysarthric and control data and write to csv
+  * *inference.py:* taken from Deep Speech source code and modified to run evaluation on the UASpeech dataset (WER and CER at speaker and intelligibility levels)
 * encoder-decoder:  
   * *main.py:* crux of the encoder-decoder model implemented in Tensorflow
   * *levenshtein.py:* levenshtein distance used in results.py
-  * *data.py:* feature extraction
   * *results.py:* speaker and intelligibility based WERs & CERs
+  * *data.py:* feature extraction using MFCCs
 * exploratory-data-analysis: 
-  *  *UASpeech.py:* intelligibility, duration, and raw waveform plots of the UASpeech data
+  *  *UASpeech.py:* intelligibility level, duration distribution, and raw waveform plots of the UASpeech data
 * freeze:
   * *DeepSpeech.py:* taken from Deep Speech source code and modified to achieve layer freezing by setting trainable=False for the first three layers
   * *train.py:* taken from Deep Speech source code and modified to import DeepSpeech.py
