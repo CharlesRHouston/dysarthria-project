@@ -1,0 +1,21 @@
+# download data
+gdrive download --recursive ...
+
+ls -1 | wc -l
+
+gdrive download --recursive 1BjdYKoEU0tLamjvTKTjLnv54wzWl8qEt;
+gdrive download --recursive 18R-hilg7xTXUxECvTS2xIbe1ly1799KL;
+gdrive download --recursive 15zWBn1d3__FG7fFPMQPg1Dp-aorTqSAw;
+gdrive download --recursive 1PugKx70XblJDdiCz4pKwimrMDfMuT134;
+gdrive download --recursive 1sCwQsIsLp2ruhUo41CWV3PU1bp7GBWyF
+
+gdrive download --recursive 1AZs1iH6Rp8LqGQQLbL2NCvBoiJGOKANU;
+gdrive download --recursive 1IusDhYKT6qNpfs-lsBa7zZQMLYa67XKL;
+gdrive download --recursive 1oYHNynwjSckFfly7gatrBNCxqXKl65Yl;
+gdrive download --recursive 191Kijlqv7SbI_g4KH67xSurpr_w0RauZ;
+gdrive download --recursive 1Fsb9o6ctFjjKgYEYi3o-8bgO5voU-lxD;
+gdrive download --recursive 1ZMU-UANX-shtk3Ns82UAuFNWYlyULSI-;
+gdrive download --recursive 1l-Q_Ze1bMtoHmKZT_qFN5XonOIIXFY4R;
+gdrive download --recursive 1ufZg1APVuAjPR3m3DT2W8qe2WXNTog9Y;
+gdrive download --recursive 1GjBZYHF6sC4sUqqixPXR3a9idjUK19n_;
+gdrive download --recursive 1j7zN8HiDlmA0c1ZajZi0dko0SYHJS9fb;

@@ -1,0 +1,55 @@
+cd ~/DeepSpeech
+
+# download scorer
+
+wget https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.scorer
+
+# early stopping model
+
+tar -xvf deepspeech-0.9.3-checkpoint.tar.gz -C ~/checkpoints/load_save/
+
+# random seeds
+
+# fine-tune: 4568
+# fine-tune-aug: 4569
+# re-init: 4570
+# freeze: 4571
+# freeze-aug: 4572
+
+# augmented model
+
+check: export name, seed, load train, next lines
+
+tar -xvf deepspeech-0.9.3-checkpoint.tar.gz -C ~/checkpoints/load_save/
+
+#--augment frequency_mask[p=1.0,n=1:3,size=3:6] \
+#--augment time_mask[p=1.0,n=1:3,size=50:100,domain=signal]
+
+tar -xvf deepspeech-0.9.3-checkpoint.tar.gz -C ~/checkpoints/load_save/
+
+python3 DeepSpeech.py \
+--train_cudnn True \
+--train_files ~/Datasets/csv/train.csv \
+--dev_files ~/Datasets/csv/dev.csv \
+--checkpoint_dir ~/checkpoints/load_save/deepspeech-0.9.3-checkpoint/ \
+--learning_rate 0.00001 \
+--epochs 300 \
+--train_batch_size 32 \
+--dev_batch_size 16 \
+--n_hidden 2048 \
+--export_dir ~/checkpoints/export/ \
+--load_train 'best' \
+--load_evaluate 'best' \
+--export_file_name 'freeze-aug' \
+--force_initialize_learning_rate True \
+--early_stop True \
+--es_epochs 20 \
+--es_min_delta 0.05 \
+--reduce_lr_on_plateau True \
+--plateau_epochs 10 \
+--plateau_reduction 0.5 \
+--checkpoint_secs 200 \
+--max_to_keep 10 \
+--random_seed 4572 \
+--augment frequency_mask[p=1.0,n=1,size=4~1] \
+--augment time_mask[p=1.0,n=1,size=60~20,domain=signal]

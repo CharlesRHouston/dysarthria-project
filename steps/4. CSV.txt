@@ -1,0 +1,15 @@
+# install dependencies
+pip3 install pandas
+pip3 install xlrd
+
+# generate set (1, 2, and 3)
+cd ~/Datasets/
+python3 generate_csv_3.py \
+--path_name ~/UASpeech/ \
+--keyword_file speaker_wordlist.xls \
+--set 1
+
+python3 generate_csv_3.py \
+--path_name /mnt/c/Users/charl/Desktop/Thesis/Data/UASpeech/UASpeech-3/  \
+--keyword_file speaker_wordlist.xls \
+--set 1

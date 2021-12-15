@@ -1,0 +1,105 @@
+# dowload scorer
+wget https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-models.scorer
+
+# deepspeech gpu
+pip3 install deepspeech-gpu
+pip3 install --upgrade deepspeech-gpu
+
+deep-speech/deepspeech-0.9.3-models.pbmm
+models/fine-tune.pbmm
+models/fine-tune-aug.pbmm
+models/re-init.pbmm
+
+python3 inference.py \
+--model ~/checkpoints/export/models/freeze-aug.pbmm \
+--scorer ~/checkpoints/export/deep-speech/deepspeech-0.9.3-models.scorer \
+--audio ~/Datasets/csv/test.csv \
+--keys speaker_wordlist.xls \
+--lm_alpha 0.25 \
+--lm_beta 1.1834137581510284 \
+--results_name results \
+--predictions_name predictions
+
+# acoustic
+
+python3 inference.py \
+--model ~/checkpoints/export/models/re-init.pbmm \
+--audio ~/Datasets/csv/test.csv \
+--keys speaker_wordlist.xls \
+--results_name results \
+--predictions_name predictions
+
+
+
+
+
+
+
+
+
+## predict single clip ##
+
+python3 client.py \
+--model ~/checkpoints/export/xyz-complete-models/fine-tune/fine-tune.pbmm \
+--audio ~/UASpeech/F02/F02_B2_D0_M7.wav
+
+## predict multiple clips ##
+
+# generate words
+# predict words
+
+M01, M05, F05, F02
+C, D, L
+
+python3 ~/Datasets/generate_words.py \
+--keyword_file ~/Datasets/speaker_wordlist.xls \
+--path_name ~/UASpeech/ \
+--speaker F02 \
+--word_key L \
+--batch B3;\
+python3 ~/Inference/predictions/inference_words.py \
+--keys ~/Inference/speaker_wordlist.xls \
+--model ~/checkpoints/export/xyz-complete-models/re-init-aug/re-init-aug.pbmm \
+--scorer ~/checkpoints/export/xyz-complete-models/deep-speech/deepspeech-0.9.3-models.scorer \
+--lm_alpha 0.25 \
+--lm_beta 1.00 \
+--audio ~/Inference/predictions/words.csv \
+--output_name F02_L
+
+mv M01_C.txt language/M01/re-init-aug/;\
+mv M01_D.txt language/M01/re-init-aug/;\
+mv M01_L.txt language/M01/re-init-aug/
+
+mv M05_C.txt language/M05/re-init-aug/;\
+mv M05_D.txt language/M05/re-init-aug/;\
+mv M05_L.txt language/M05/re-init-aug/
+
+mv F05_C.txt language/F05/re-init-aug/;\
+mv F05_D.txt language/F05/re-init-aug/;\
+mv F05_L.txt language/F05/re-init-aug/
+
+mv F02_C.txt language/F02/re-init-aug/;\
+mv F02_D.txt language/F02/re-init-aug/;\
+mv F02_L.txt language/F02/re-init-aug/
+
+
+
+
+# inference control
+
+# without LM
+
+python3 inference_control.py \
+--model ~/checkpoints/export/xyz-complete-models/deep-speech/deepspeech-0.9.3-models.pbmm \
+--audio ~/Datasets/control.csv \
+--keys speaker_wordlist.xls \
+--results_name control
+
+python3 inference_control.py \
+--model ~/checkpoints/export/xyz-complete-models/deep-speech/deepspeech-0.9.3-models.pbmm \
+--scorer ~/checkpoints/export/xyz-complete-models/deep-speech/deepspeech-0.9.3-models.scorer \
+--lm_alpha 0.25 \
+--lm_beta 1.00 \
+--audio ~/Datasets/control.csv \
+--keys speaker_wordlist.xls \
+--results_name control

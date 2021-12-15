@@ -1,0 +1,11 @@
+cd ~/DeepSpeech/
+
+python3 util/taskcluster.py \
+--source tensorflow \
+--artifact convert_graphdef_memmapped_format \
+--branch r1.15 \
+--target .
+
+./convert_graphdef_memmapped_format \
+--in_graph=freeze-aug.pb \
+--out_graph=freeze-aug.pbmm

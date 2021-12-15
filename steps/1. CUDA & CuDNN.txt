@@ -1,0 +1,28 @@
+# which cuda version
+ls /usr/local/
+ls -alh /usr/local/cuda
+nvcc --version
+
+# change cuda version (if necessary)
+sudo rm /usr/local/cuda
+sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda
+
+# check cudnn version
+cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+
+# download gdrive
+wget 
+sudo cp gdrive /usr/local/bin/gdrive
+sudo chmod a+x /usr/local/bin/gdrive
+
+# download cudnn from google drive
+gdrive download ...
+
+# install cudnn
+tar -xzvf cudnn-9.0-linux-x64-v7.tgz # check correct version
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+
+
+

@@ -1,0 +1,56 @@
+# create and activate virtual environment
+sudo apt-get install python3-venv
+python3 -m venv $HOME/tmp/deepspeech/
+source $HOME/tmp/deepspeech/bin/activate
+
+# clone deep speech repo
+pip3 install --upgrade pip
+pip3 install deepspeech-gpu
+cd ~
+git clone --branch v0.9.3 https://github.com/mozilla/DeepSpeech
+
+# checkpoint directory
+mkdir checkpoints
+cd checkpoints
+mkdir export
+mkdir load_save
+
+# csv directory
+cd ~
+mkdir Datasets
+mkdir Inference
+
+# data directory
+mkdir data
+
+# download and extract checkpoint
+cd ~
+wget https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0.9.3-checkpoint.tar.gz
+tar -xvf deepspeech-0.9.3-checkpoint.tar.gz -C ~/checkpoints/load_save/
+
+# dependencies
+cd DeepSpeech
+pip3 install --upgrade pip==20.2.2 wheel==0.34.2 setuptools==49.6.0
+pip3 install --upgrade -e .
+sudo apt-get install python3-dev
+pip3 install librosa==0.7.2
+sudo apt-get install pciutils
+lspci | grep -i nvidia
+pip3 install folium==0.2.1
+
+# ctc decoder?
+wget https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/ds_ctcdecoder-0.9.3-cp39-cp39m-manylinux1_x86_64.whl
+tag/v0.9.3
+wget https://github.com/mozilla/DeepSpeech/releases/tag/v0.9.3/ds_ctcdecoder-0.9.3-cp39-cp39m-manylinux1_x86_64.whl
+pip3 install ds_ctcdecoder-0.9.3-cp39-cp39m-manylinux1_x86_64.whl
+
+# necessary?
+wget https://github.com/git-lfs/git-lfs/releases/download/v2.11.0/git-lfs-linux-amd64-v2.11.0.tar.gz
+tar xvf ~/git-lfs-linux-amd64-v2.11.0.tar.gz -C /content
+sudo bash ~/install.sh
+cd ~/DeepSpeech
+git-lfs pull
+
+# tensorflow
+pip3 uninstall tensorflow
+pip3 install 'tensorflow-gpu==1.15.4'
