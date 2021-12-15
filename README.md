@@ -21,6 +21,10 @@ Code accompanying masters minor dissertation which investigates different approa
   * *train.py:* taken from Deep Speech source code and modified to import DeepSpeech.py
 * plots: 
   * creation of all plots used in the dissertation
+* steps:
+  * setting up an AWS instance with the appropriate modules and versions
+  * training and exporting pb models using Deep Speech
+  * inference using the modified code
 
 ### References
 
