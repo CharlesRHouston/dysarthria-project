@@ -1,4 +1,4 @@
-## Adapting Large-Scale Speaker-Independent Automatic Speech Recognition to Dysarthric Speech
+# Adapting Large-Scale Speaker-Independent Automatic Speech Recognition to Dysarthric Speech
 
 ### Description
 
