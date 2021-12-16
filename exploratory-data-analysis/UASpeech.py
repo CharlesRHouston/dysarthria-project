@@ -5,7 +5,7 @@ import numpy as np
 from scipy.io import wavfile
 import os
 import librosa
-from modules.curlyBrace import curlyBrace
+from curlyBrace import curlyBrace
 import nltk
 
 # 1. intelligibility plot
@@ -49,7 +49,7 @@ plt.setp(baseline, linewidth=0)
 
 durations = []
 long = []
-for path, direc, files in os.walk(r"C:\Users\charl\Desktop\Thesis\Data\UASpeech\UASpeech-3"):
+for path, direc, files in os.walk(r"..."): # insert path to UASpeech data
     if os.path.basename(path) not in SPEECH.keys():
         continue
     for file in files:
@@ -99,10 +99,10 @@ print(allWordToPhonesDict["thorn"])
 # left
 
 # standard file names
-leftStandard = r"C:\Users\charl\Desktop\Thesis\Data\SpeechCommands\left\00f0204f_nohash_0.wav"
+leftStandard = r"...\SpeechCommands\left\00f0204f_nohash_0.wav" # insert path to Speech Commands data
 
 # impaired file names
-leftImpaired = r"C:\Users\charl\Desktop\Thesis\Data\UASpeech\UASpeech-3\F03\F03_B1_C18_M7.wav"
+leftImpaired = r"...\F03\F03_B1_C18_M7.wav" # insert path to UASpeech data
 
 # plot signal
 fig, axes = plt.subplots(2, 1)
@@ -142,10 +142,10 @@ fig.tight_layout()
 # HOUSE
 
 # standard file names
-houseStandard = r"C:\Users\charl\Desktop\Thesis\Data\SpeechCommands\house\00b01445_nohash_1.wav"
+houseStandard = r"...\SpeechCommands\house\00b01445_nohash_1.wav" # insert path to Speech Commands data
 
 # impaired file names
-houseImpaired = r"C:\Users\charl\Desktop\Thesis\Data\UASpeech\UASpeech-3\M04\M04_B1_UW82_M7.wav"
+houseImpaired = r"...\UASpeech\M04\M04_B1_UW82_M7.wav" # insert path to Speech Commands data
 
 # plot signal
 fig, axes = plt.subplots(2, 1)
@@ -175,26 +175,5 @@ axes[1].set_ylabel("Pressure")
 
 curlyBrace(fig, axes[1], (5100/sampleRate, 1.1), (7700/sampleRate, 1.1), color = "black", str_text = "[AW]")
 curlyBrace(fig, axes[1], (7900/sampleRate, 1.1), (11500/sampleRate, 1.1),  0.08, color = "black", str_text = "[S]")
-
-fig.tight_layout()
-
-# 3. comparing speakers
-
-threeF03 = r"C:\Users\charl\Desktop\Thesis\Data\UASpeech\UASpeech-3\F03\F03_B1_D3_M7.wav"
-threeF02 = r"C:\Users\charl\Desktop\Thesis\Data\UASpeech\UASpeech-3\F02\F02_B1_D3_M7.wav"
-threeM11 = r"C:\Users\charl\Desktop\Thesis\Data\UASpeech\UASpeech-3\M11\M11_B1_D3_M7.wav"
-threeM08 = r"C:\Users\charl\Desktop\Thesis\Data\UASpeech\UASpeech-3\M08\M08_B1_D3_M7.wav"
-
-signalF03, sampleRateF03 = librosa.load(threeF03, sr = None)
-signalF02, sampleRateF02 = librosa.load(threeF02, sr = None)
-signalM11, sampleRateM11 = librosa.load(threeM11, sr = None)
-signalM08, sampleRateM08 = librosa.load(threeM08, sr = None)
-
-# plot signal
-fig, axes = plt.subplots(4, 1)
-axes[0].plot(signalF03, linewidth = 0.3, color = "black") # np.linspace(0, 1, sampleRateF03), 
-axes[1].plot(signalF02, linewidth = 0.3, color = "black") # np.linspace(0, 1, sampleRateF02), 
-axes[2].plot(signalM11, linewidth = 0.3, color = "black") # np.linspace(0, 1, sampleRateM11), 
-axes[3].plot(signalM08, linewidth = 0.3, color = "black") # np.linspace(0, 1, sampleRateM08), 
 
 fig.tight_layout()
