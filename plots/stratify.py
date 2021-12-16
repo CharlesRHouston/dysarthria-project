@@ -63,9 +63,9 @@ def errors(new_df, categoryDict, categoryErrors, output_name):
 
 def main():
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--speaker_wordlist', default="C:\\Users\\charl\\Desktop\\Thesis\\Data\\UASpeech\\speaker_wordlist.xls", help='Path to the spearker wordlist xls file')
-	parser.add_argument('--predictions', default="C:\\Users\\charl\\Desktop\\Instance\\Inference\\results\\fine-tune-aug\\predictions.txt", help='Path to predictions txt file')
-	parser.add_argument('--output_name', default="predictions", help='Name of output txt results file')
+	parser.add_argument('--speaker_wordlist', help='Path to the speaker wordlist xls file')
+	parser.add_argument('--predictions', help='Path to predictions txt file')
+	parser.add_argument('--output_name', help='Name of output txt results file')
 	args = parser.parse_args()
 
 	# create dictionary

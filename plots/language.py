@@ -16,7 +16,7 @@ data = []
 for model in models:
     sub_data = []
     for value in values:
-        x = pd.read_csv("C:\\Users\\charl\\Desktop\\Instance\\Inference\\lm-search\\" + model  + "\\results_" + value + ".csv")
+        x = pd.read_csv("...\\lm-search\\" + model  + "\\results_" + value + ".csv") # insert path
         sub_data.append(x.iloc[0,5])
     data.append(sub_data)
 

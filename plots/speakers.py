@@ -14,7 +14,7 @@ cmap = sns.color_palette(colours)
 
 data = []
 for model in models[0:-1]:
-    x = pd.read_csv("C:\\Users\\charl\\Desktop\\AWS\\Results\\deep-speech\\language\\" + model  + "\\speakers.csv")
+    x = pd.read_csv("...\\language\\" + model  + "\\speakers.csv") # insert path
     data.append(x.iloc[0,:])
 data.append(np.array([91.37, 97.24, 94.44, 89.8, 95.69, 98.04, 93.33, 94.9, 90.2, 92.16, 90.2, 93.73, 98.04, 88.63, 95.69]))
 

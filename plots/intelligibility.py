@@ -14,7 +14,7 @@ colours = ["maroon", "orangered", "orange", "green", "lime", "teal", "cyan"]
 
 data = []
 for model in models[0:-1]:
-    x = pd.read_csv("C:\\Users\\charl\\Desktop\\AWS\\Results\\deep-speech\\language\\" + model  + "\\results.csv")
+    x = pd.read_csv("...\\Results\\deep-speech\\language\\" + model  + "\\results.csv") # insert path
     data.append(np.array(x.iloc[0,1:-1], dtype=np.float32))
 data.append(np.array([97.25, 93.99, 93.83, 90.2]))
 

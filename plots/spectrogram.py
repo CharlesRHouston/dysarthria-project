@@ -12,7 +12,7 @@ N_MELS = 64
 MFCC = 13
 
 # read in audio
-fileName = r"C:\Users\charl\Desktop\Thesis\Data\UASpeech\UASpeech-3\M10\M10_B3_UW25_M7.wav"
+fileName = r"...\UASpeech\UASpeech-3\M10\M10_B3_UW25_M7.wav" # insert path
 rawSignal, sampleRate = librosa.load(fileName, sr = None)
 
 # normalization
