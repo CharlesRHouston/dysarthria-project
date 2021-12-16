@@ -1,4 +1,4 @@
-# purpose: check that freezing the first layers is working by printing out the layer weights
+# purpose: check that freezing the first layers is working by printing out layer weights
 
 import tensorflow as tf
 from tensorflow.python.framework import tensor_util
