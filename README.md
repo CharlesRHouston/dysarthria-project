@@ -22,7 +22,7 @@ The encoder-decoder model is coded from scratch, but inspired by an [article](ht
 
 ### Figures
 
-Exploratory data analysis of the UASpeech dataset as well as all of the plots used in the thesis are provided. 
+Exploratory data analysis of the UASpeech dataset as well as many of the plots used in the thesis are provided. 
 
 ### References
 
