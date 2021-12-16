@@ -6,7 +6,7 @@ Code accompanying masters minor dissertation which investigates different approa
 
 ### Training and fine-tuning using Mozilla Deep Speech
 
-To train and fine-tune models using Mozilla Deep Speech, the procedure outlined in the "steps" folder was adhered to. This was based on the Deep Speech [documentation](https://deepspeech.readthedocs.io/en/r0.9/TRAINING.html). An AWS P2 instance running a Base Deep Learning AMI and harnessing a Tesla K80 GPU was used. The *splits.py* scripts under the deep-speech folder are responsible for splitting the data and writing to a csv. 
+To train and fine-tune models using Mozilla Deep Speech, the procedure outlined in the "steps" folder was adhered to. This was based on the Deep Speech [documentation](https://deepspeech.readthedocs.io/en/r0.9/TRAINING.html). An AWS P2 instance running a Base Deep Learning AMI and harnessing a Tesla K80 GPU was used. The *splits.py* scripts in the "deep-speech" folder are responsible for splitting the data and writing to csv. 
 
 ### Running inference on the fine-tuned models
 
