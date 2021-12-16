@@ -20,6 +20,10 @@ Layer freezing is not currently an option in Mozilla Deep Speech. To achieve it,
 
 The encoder-decoder model is coded from scratch, but inspired by an [article](https://keras.io/examples/nlp/lstm_seq2seq/) by Francois Chollet. The crux of the model is in *main.py*. Feature extraction using MFCCs can be found in *data.py*. The WERs and CERs are calculated using *levenshtein.py* and *results.py*.
 
+### Figures
+
+Exploratory data analysis of the UASpeech dataset as well as all of the plots used in the thesis are provided. 
+
 ### References
 
 * Hannun, Awni, Carl Case, et al. (2014). Deep Speech: Scaling up end-to-end speech recognition. arXiv: 1412.5567 [cs.CL].
