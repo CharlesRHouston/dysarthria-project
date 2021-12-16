@@ -102,7 +102,7 @@ print(allWordToPhonesDict["thorn"])
 leftStandard = r"...\SpeechCommands\left\00f0204f_nohash_0.wav" # insert path to Speech Commands data
 
 # impaired file names
-leftImpaired = r"...\F03\F03_B1_C18_M7.wav" # insert path to UASpeech data
+leftImpaired = r"...\UASpeech\F03\F03_B1_C18_M7.wav" # insert path to UASpeech data
 
 # plot signal
 fig, axes = plt.subplots(2, 1)
