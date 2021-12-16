@@ -6,8 +6,7 @@ import numpy as np
 
 
 # valid speakers
-# SPEAKERS = ("F02", "F03", "F04", "F05", "M01", "M04", "M05", "M07", "M08", "M09", "M10", "M11", "M12", "M14", "M16")
-SPEAKERS = ("CF02", "CF03", "CF04", "CF05", "CM01", "CM04", "CM05", "CM06", "CM08", "CM09", "CM10", "CM12", "CM13")
+SPEAKERS = ("F02", "F03", "F04", "F05", "M01", "M04", "M05", "M07", "M08", "M09", "M10", "M11", "M12", "M14", "M16")
 
 
 def remove_dash(word):
@@ -51,7 +50,7 @@ def add_row(path, file, keyToLabel, word_key, df, op_sys):
 def main():
     parser = argparse.ArgumentParser(description="Create train, validation and test set csv files for fine-tuning")
     parser.add_argument("--path_name", type = str, \
-        help = "path to folder containing wav files for F02, F03, etc. e.g. /mnt/c/Users/charl/Desktop/UASpeech")
+        help = "path to folder containing wav files for F02, F03, etc.")
     parser.add_argument("--keyword_file", type = str, default = "speaker_wordlist.xls",\
         help = "path to xls file containing mapping from keys to words; default 'speaker_wordlist.xls'")
     parser.add_argument("--set", type = int, default = 1, \

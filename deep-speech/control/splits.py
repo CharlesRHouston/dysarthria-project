@@ -48,7 +48,7 @@ def add_row(path, file, keyToLabel, word_key, df, op_sys):
 def main():
     parser = argparse.ArgumentParser(description="Create train, validation and test set csv files for fine-tuning")
     parser.add_argument("--path_name", type = str, \
-        help = "path to folder containing wav files for F02, F03, etc. e.g. /mnt/c/Users/charl/Desktop/UASpeech")
+        help = "path to folder containing wav files for F02, F03, etc.")
     parser.add_argument("--keyword_file", type = str, default = "speaker_wordlist.xls",\
         help = "path to xls file containing mapping from keys to words; default 'speaker_wordlist.xls'")
     parser.add_argument("--os", type = int, default = 1, \
