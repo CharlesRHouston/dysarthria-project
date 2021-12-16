@@ -17,8 +17,8 @@ Code accompanying masters minor dissertation which investigates different approa
 * exploratory-data-analysis: 
   *  *UASpeech.py:* intelligibility level, duration distribution, and raw waveform plots of the UASpeech data
 * freeze:
-  * *DeepSpeech.py:* taken from Deep Speech source code and modified to achieve layer freezing by setting trainable=False for the first three layers
-  * *train.py:* taken from Deep Speech source code and modified to import DeepSpeech.py
+  * *DeepSpeech.py:* **taken from Deep Speech source code** and modified to achieve layer freezing by setting trainable=False for the first three layers
+  * *train.py:* **taken from Deep Speech source code** and modified to import DeepSpeech.py
 * plots: 
   * creation of all plots used in the dissertation
 * steps:
