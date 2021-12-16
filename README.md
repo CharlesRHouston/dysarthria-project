@@ -6,20 +6,19 @@ Code accompanying masters minor dissertation which investigates different approa
 
 ### Training and fine-tuning using Mozilla Deep Speech
 
-To train and fine-tune models using Mozilla Deep Speech, the procedure outlined in "steps" folder was adhered to. An AWS P2 instance running a Base Deep Learning AMI was used. The 
+To train and fine-tune models using Mozilla Deep Speech, the procedure outlined in "steps" folder was adhered to. This was based on the [Deep Speech docs](https://deepspeech.readthedocs.io/en/r0.9/TRAINING.html). An AWS P2 instance running a Base Deep Learning AMI harnessing a Tesla K80 GPU was used. 
 
 ### Running inference on the fine-tuned models
 
-The 
+The [source code](https://deepspeech.readthedocs.io/en/r0.9/Python-Examples.html#py-api-example) for running inference using Deep Speech was used as a starting point. It was modified to calculate the word error rate (WER) and character error rate (CER) for all examples from the input csv created when fine-tuning to Deep Speech. It also stratified results by intelligibility level and speaker.
 
 ### Freezing layers
 
-Layer freezing is not currently an option in Mozilla Deep Speech. To achieve it, the [approach](https://github.com/onnoeberhard/deepspeech-transfer) outlined by Eberhard and Zesch (2021) was applied. This primarily consisted of setting "trainable=False" for the desired layers. 
+Layer freezing is not currently an option in Mozilla Deep Speech. To achieve it, the [approach](https://github.com/onnoeberhard/deepspeech-transfer/tree/transfer-2) used by Eberhard and Zesch (2021) was applied. This primarily consisted of setting "trainable=False" for the desired layers. 
 
 ### Encoder-decoder model
 
-### Folders & Scripts
-
+The encoder-decoder model is coded from scratch, but inspired by [Francois Chollet](https://keras.io/examples/nlp/lstm_seq2seq/). The crux of the model is in main.py. Feature extraction using MFCCs can be found in data.py. The WERs and CERs are calculated using levenshtein.py and results.py.
 
 ### References
 
