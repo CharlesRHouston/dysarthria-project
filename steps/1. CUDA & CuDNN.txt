@@ -15,7 +15,7 @@ wget
 sudo cp gdrive /usr/local/bin/gdrive
 sudo chmod a+x /usr/local/bin/gdrive
 
-# download cudnn from google drive
+# download cudnn from google drive using gdrive
 gdrive download ...
 
 # install cudnn

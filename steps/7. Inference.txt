@@ -5,10 +5,16 @@ wget https://github.com/mozilla/DeepSpeech/releases/download/v0.9.3/deepspeech-0
 pip3 install deepspeech-gpu
 pip3 install --upgrade deepspeech-gpu
 
+# models
+
 deep-speech/deepspeech-0.9.3-models.pbmm
 models/fine-tune.pbmm
 models/fine-tune-aug.pbmm
+models/freeze.pbmm
+models/freeze-aug.pbmm
 models/re-init.pbmm
+
+# with language model
 
 python3 inference.py \
 --model ~/checkpoints/export/models/freeze-aug.pbmm \
@@ -20,7 +26,7 @@ python3 inference.py \
 --results_name results \
 --predictions_name predictions
 
-# acoustic
+# just acoustic model
 
 python3 inference.py \
 --model ~/checkpoints/export/models/re-init.pbmm \

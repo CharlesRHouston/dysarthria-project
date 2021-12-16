@@ -20,12 +20,12 @@ tar -xvf deepspeech-0.9.3-checkpoint.tar.gz -C ~/checkpoints/load_save/
 
 check: export name, seed, load train, next lines
 
-tar -xvf deepspeech-0.9.3-checkpoint.tar.gz -C ~/checkpoints/load_save/
-
-#--augment frequency_mask[p=1.0,n=1:3,size=3:6] \
-#--augment time_mask[p=1.0,n=1:3,size=50:100,domain=signal]
+# checkpoint 
 
 tar -xvf deepspeech-0.9.3-checkpoint.tar.gz -C ~/checkpoints/load_save/
+
+# train/fine-tune
+# take not of: --load_train, --export_file_name, --random_seed, and --augment
 
 python3 DeepSpeech.py \
 --train_cudnn True \
@@ -53,3 +53,4 @@ python3 DeepSpeech.py \
 --random_seed 4572 \
 --augment frequency_mask[p=1.0,n=1,size=4~1] \
 --augment time_mask[p=1.0,n=1,size=60~20,domain=signal]
+
