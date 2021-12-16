@@ -1,28 +1,99 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-from pandas.plotting import parallel_coordinates
+# take in predictions text file and produce WERs grouped by word category
 
-# parameters
+from levenshtein import min_edit_distance
+import pandas
+import argparse
 
-models = ["deep-speech", "fine-tune", "fine-tune-aug", "freeze", "freeze-aug", "re-init", "encoder-decoder"]
-colours = ["maroon", "orangered", "orange", "green", "lime", "teal", "cyan"]
+# remove dash from word
+def remove_dash(word):
+	new_word = []
+	for char in word:
+		if char == '-':
+			continue
+		else:
+			new_word.append(char)
+	return ''.join(new_word)
 
-# data frame
+# dictionary of with words as keys and categories as valeus
+def createCategoryDict(file):
+	wordToCategory = {}
+	df = pandas.read_excel(file, sheet_name = "Word_filename")
+	for i in range(len(df)):
+		if df["FILE NAME"][i][0:2] in ("B1", "B3"):
+			continue
+		key = remove_dash(df["WORD"][i].lower())
+		if df["FILE NAME"][i][0:2] == "B2":
+			wordToCategory[key] = "UW"
+		elif df["FILE NAME"][i][0:2] == "CW":
+			wordToCategory[key] = "CW"
+		else:	
+			wordToCategory[key] = df["FILE NAME"][i][0]
+	return wordToCategory
 
-df = pd.DataFrame(columns=["Model", "Commands", "Digits", "Radio Alphabet", "Common", "Uncommon"])
-for model in models:
-    row = []
-    results = open("C:\\Users\\charl\\Desktop\\AWS\\Results\\word category\\language\\" + model + ".txt").readlines()[0:-1]
-    # results = open("C:\\Users\\charl\\Desktop\\AWS\\Results\\word category\\acoustic\\" + model + ".txt").readlines()[0:-1]
-    for result in results:
-        row.append(float("".join(_ for _ in result if _ in ".1234567890")))
-    df.loc[len(df.index)] = [model] + row
-    
-# plot
 
-fig, axs = plt.subplots(1, 1, figsize=(5.5, 3.5))
-parallel_coordinates(df, 'Model' , color=colours, linewidth=2.5)
-axs.set(ylim=(0, 150))
-axs.set_ylabel("WER (%)", size=12)
-plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.45), ncol=3, fancybox=True, shadow=False, framealpha=1) #
-fig.tight_layout()
+# calculate WER by category
+def errors(new_df, categoryDict, categoryErrors, output_name):
+
+	for element in new_df:
+		# edits and length
+		edits = min_edit_distance(element[1], element[2])
+		length = len(element[1])
+
+		# identify category
+		category = categoryDict[element[1][0]]
+
+		# category error
+		categoryErrors[category][0] += edits
+		categoryErrors[category][1] += length
+
+		# total error
+		categoryErrors["Total"][0] += edits
+		categoryErrors["Total"][1] += length
+
+	for key, values in categoryErrors.items():
+		print(key)
+		print(round(values[0]/values[1]*100, 2))
+		print("\n")
+
+	# write prediction to text file
+	with open(output_name + ".txt", "a") as text_file:
+		for key, values in categoryErrors.items():
+			text_file.write(f"{key}: {round(values[0]/values[1]*100, 2)} %\n")
+
+
+def main():
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--speaker_wordlist', default="C:\\Users\\charl\\Desktop\\Thesis\\Data\\UASpeech\\speaker_wordlist.xls", help='Path to the spearker wordlist xls file')
+	parser.add_argument('--predictions', default="C:\\Users\\charl\\Desktop\\Instance\\Inference\\results\\fine-tune-aug\\predictions.txt", help='Path to predictions txt file')
+	parser.add_argument('--output_name', default="predictions", help='Name of output txt results file')
+	args = parser.parse_args()
+
+	# create dictionary
+	categoryDict = createCategoryDict(args.speaker_wordlist)
+	
+	# category errors storage
+	categoryErrors = {}
+	for element in ("C", "D", "L", "CW", "UW", "Total"):
+		categoryErrors[element] = [0, 0]
+
+	# read in text file
+	file = open(args.predictions)
+	df = file.readlines()
+
+	# line by line extract data
+	count = 0
+	new_df = []
+	while count < len(df):
+		speaker = df[count].replace("Speaker: ", "").replace("\n", "")
+		actual = df[count+1].replace("Actual: ", "").replace("\n", "").split(" ")
+		predicted = df[count+2].replace("Predicted: ", "").replace("\n", "").split(" ")
+		new_df.append([speaker, actual, predicted])
+		count += 4
+
+	errors(new_df, categoryDict, categoryErrors, args.output_name)
+
+
+if __name__ == "__main__":
+	main()
+
+
