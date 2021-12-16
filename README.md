@@ -8,7 +8,7 @@ Code accompanying masters minor dissertation which investigates different approa
 
 * deep-speech: 
   * *split.py:* split the data into train/validation/test sets for both dysarthric and control data and write to csv
-  * *inference.py:* taken from Deep Speech source code and modified to run evaluation on the UASpeech dataset (WER and CER at speaker and intelligibility levels)
+  * *inference.py:* **taken from Deep Speech source code** and modified to run evaluation on the UASpeech dataset (WER and CER at speaker and intelligibility levels)
 * encoder-decoder:  
   * *main.py:* crux of the encoder-decoder model implemented in Tensorflow
   * *levenshtein.py:* levenshtein distance used in results.py
