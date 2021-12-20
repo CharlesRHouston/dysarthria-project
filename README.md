@@ -10,7 +10,7 @@ To train and fine-tune models using Mozilla Deep Speech, the procedure outlined 
 
 ### Running inference on the fine-tuned models
 
-The [source code](https://deepspeech.readthedocs.io/en/r0.9/Python-Examples.html#py-api-example) for running inference using Deep Speech was used as a starting point. It was modified to calculate the word error rate (WER) and character error rate (CER) for all examples from the csv files created by *splits.py*. It also stratified results by intelligibility level and speaker. This was coded up separately for the control and dysarthric data. 
+The [source code](https://deepspeech.readthedocs.io/en/r0.9/Python-Examples.html#py-api-example) for running inference using Deep Speech was used as a starting point for the *inference.py* scripts in the "deep-speech" folder. It was modified to calculate the word error rate (WER) and character error rate (CER) for all examples from the csv files created by *splits.py*. It also stratified results by intelligibility level and speaker. This was coded up separately for the control and dysarthric data. 
 
 ### Freezing layers
 
@@ -22,7 +22,7 @@ The encoder-decoder model is coded from scratch, but inspired by an [article](ht
 
 ### Figures
 
-Exploratory data analysis of the UASpeech dataset as well as many of the plots used in the thesis are provided. 
+Exploratory data analysis of the UASpeech dataset and the scripts used to generate plots for the thesis are provided. The *mels.py* script was based on code found in [this](https://haythamfayek.com/2016/04/21/speech-processing-for-machine-learning.html) article.
 
 ### References
 
@@ -31,3 +31,4 @@ Exploratory data analysis of the UASpeech dataset as well as many of the plots u
 * Kim, Heejin et al. (2008). “Dysarthric speech database for universal access research”. English (US). In: Proceedings of the Annual Conference of the International Speech Communication Association, INTERSPEECH, pp. 1741–1744. issn: 2308-457X.
 * Chollet, Francois (2017). Character-level recurrent sequence-to-sequence model. URL: https://keras.io/examples/nlp/lstm_seq2seq/ (visited on 09/16/2021).
 * Eberhard, Onno and Torsten Zesch (Sept. 2021). “Effects of Layer Freezing on Transferring a Speech Recognition System to Under-resourced Languages”. In: Proceedings of the 17th Con- ference on Natural Language Processing (KONVENS 2021). Du ̈sseldorf, Germany: KONVENS 2021 Organizers, pp. 208–212. url: https://aclanthology.org/2021.konvens-1.19.
+* Fayek, Haytham (2016). Speech Processing for Machine Learning: Filter banks, Mel-Frequency Cepstral Coefficients (MFCCs) and What's In-Between. URL: https://haythamfayek.com/2016/04/21/speech-processing-for-machine-learning.html (visited on 09/01/2021).
