@@ -2,7 +2,7 @@
 
 ### Description
 
-Code investigating different approaches for improving dysarthric speech recognition in a Deep Learning context. More specifically, [Deep Speech](https://github.com/mozilla/DeepSpeech) v0.9.3 is fine-tuned to the [UASpeech](http://www.isle.illinois.edu/sst/data/UASpeech/) dataset. In addition to fine-tuning, layer freezing, data augmentation, and re-initialization are investigated. 
+Code investigating different approaches to improving dysarthric speech recognition in a Deep Learning context. More specifically, [Deep Speech](https://github.com/mozilla/DeepSpeech) v0.9.3 is fine-tuned to the [UASpeech](http://www.isle.illinois.edu/sst/data/UASpeech/) dataset. In addition to fine-tuning, layer freezing, data augmentation, and re-initialization are investigated. 
 
 ### Training and fine-tuning using Mozilla Deep Speech
 
